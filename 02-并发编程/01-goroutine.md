@@ -1,4 +1,6 @@
-## 一 Golang对协程的支持
+## 1 Golang对协程的支持
+
+### 1.1 进程和线程
 
 Go语言从语言层面原生提供了协程支持，即 `goroutine`，执行goroutine只需极少的栈内存(大概是4~5KB)，所以Go可以轻松的运行多个并发任务。  
 
@@ -73,7 +75,7 @@ goroutine相关API位于 `runtime` 包。
 如果Go程序要运行在多核上，则可以如下操作，此时可以实现程序的并行执行：
 ```go
 	cpuNum := runtime.NumCPU()				//获取当前系统的CPU核心数
-	runtime.GOMAXPROCS(cpuNum)				//Go中可以轻松控制使用核心数
+	runtime.GOMAXPROCS(cpuNum)				//Go中可以轻松控制使用核心数，返回上次使用的核心数
 ```
 贴士：在Go1.5之后，程序已经默认运行在多核上，无需上述设置
 
